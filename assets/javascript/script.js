@@ -133,7 +133,8 @@ $('#quizButton').click(function () {
     $('#window').append('<hr>');
     $('#window').append('HEED THIS WARNING: If you have not completed your training by viewing Episodes I through IX, there will be spoilers.');
     $('#window').append('<hr>');
-    $('#window').append('<button id="jedi" style:"width: 50%; margin: 0 0 0 25%; background-color: gold;">Begin</button>');
+    $('#window').append('<button id="jedi">Begin</button>');
+    $('#jedi').css('background-color','goldenrod');
     $('#jedi').click(function () {
         $('#window').empty();
         // change for the progress saber
@@ -167,12 +168,13 @@ $('#quizButton').click(function () {
         $('#window').text(questions[q].title);
         for (var k = 0; k < 4; k++) {
             $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
+            $('.answers').css('background-color','goldenrod');
         };
-
         $(document).on('click', '.answers', function () {
             var userChoice = $(this).text().trim();
             i = checkAnswer(userChoice, questions[q].answer, i);
             $('#answer').text(review(userChoice, questions[q].answer));
+            $('.answers').css('background-color','goldenrod');
             q++;
             // after the last question is answered, stop the countdown and show the score 
             if (q > 14) {
@@ -193,22 +195,19 @@ $('#quizButton').click(function () {
                     } else {
                         $('#window').append('<hr>');
                         $('#window').append('You have been awared the rank of JEDI IN TRAINING.');
-                    }
+                    };
                 } else {
                     $('#window').append('<hr>');
                     $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.');
-                }
-
-
+                };
                 return;
             };
-
             //display the next question
             j = j + 6;
             $('#light').width(j + '%');
             $('#window').text(questions[q].title);
             for (var k = 0; k < 4; k++) {
-                $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
+                $('#window').append('<br><button>' + questions[q].choices[k] + '</button>');
             }
             // remove the correct/wrong notification after 1 second 
             setTimeout(function () {
