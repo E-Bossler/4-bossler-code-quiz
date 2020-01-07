@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='assets/css/style.css'>
+    <title>Star Wars Quiz!</title>
+</head>
+
+<body>
+    <br>
+    <h1>STAR WARS</h1>
+    <hr>
+    <h2>Episode X:</h2>
+    <h2>The New Jedi Academy</h2>
+    <hr>
+    <h3>Do. Or Do Not. There is no try.</h3>
+    <!-- progress bar-->
+    <div class="progress">
+        <img id='Sabre' src='assets/images/ls1.png'>
+        <div id='light' class="progress-bar" role="progressbar"
+            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+        </div>
+    </div>
+    <br>
+    <div class="progress">
+            <img id='Sabre' src='assets/images/ls2.png'>
+            <div id='dark' class="progress-bar bg-danger" role="progressbar"
+                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+            </div>
+        </div>
+    <!-- progress bar  -->
+    <hr>
+    <div id='window'>
+        <h3 id='begin'>You must begin your Jedi Academy Entrance Exam</h3>
+        <hr>
+        <button id='quizButton'>
+            Test Your Knowledge
+        </button>
+        <hr>
+        <a href='highscores.html'>
+            <button id='highScoreButton'>
+                View Exam Scores
+            </button>
+        </a>
+    </div>
+    <h3 id="answer">
+
+    </h3>
+    
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/javascript/script.js"></script>
+</body>
+
+</html>

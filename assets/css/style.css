@@ -1,0 +1,51 @@
+body {
+    padding: 0 10% 0 10%;
+    background-image: url(../../assets/images/stars.jpg);
+    color: yellow;
+}
+
+h1, h2, h3 {
+    text-align: center;
+}
+
+h3 {
+    font-style: italic;
+    font-size: 20px;
+}
+
+#Sabre {
+    position: relative;
+    width: 10%;
+}
+
+#light {
+    border-color: lightblue;
+    border-width: 5px;
+}
+
+button {
+    width: 50%;
+    margin: 0 0 0 25%;
+    border-color: black;100px
+    border-radius: 5px;
+}
+
+#quizButton {
+    background-color: lightskyblue;
+}
+
+#highScoreButton {
+    background-color: lightgreen;
+}
+
+#homeButton {
+    background-color: palevioletred;
+}
+
+#jedi {
+    background-image: url(../../assets/images/jedi.png);
+}
+
+
+
+
