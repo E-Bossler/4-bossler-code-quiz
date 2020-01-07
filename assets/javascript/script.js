@@ -134,6 +134,7 @@ $('#quizButton').click(function () {
     $('#window').append('HEED THIS WARNING: If you have not completed your training by viewing Episodes I through IX, there will be spoilers.');
     $('#window').append('<hr>');
     $('#window').append('<button id="jedi">Begin</button>');
+    $('#window').append('<hr>');
     $('#jedi').css('background-color','goldenrod');
     $('#jedi').click(function () {
         $('#window').empty();
@@ -168,12 +169,14 @@ $('#quizButton').click(function () {
         $('#window').text(questions[q].title);
         for (var k = 0; k < 4; k++) {
             $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
+            $('#window').append('<hr>');
             $('.answers').css('background-color','goldenrod');
         };
         $(document).on('click', '.answers', function () {
             var userChoice = $(this).text().trim();
             i = checkAnswer(userChoice, questions[q].answer, i);
             $('#answer').text(review(userChoice, questions[q].answer));
+            $('#window').append('<hr>');
             $('.answers').css('background-color','goldenrod');
             q++;
             // after the last question is answered, stop the countdown and show the score 
