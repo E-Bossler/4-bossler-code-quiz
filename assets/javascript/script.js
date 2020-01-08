@@ -58,14 +58,14 @@ var questions = [
     {
         title: "What substance does Han Solo get frozen in?",
         choices: [
-            "ice", "mercury", "carbonite", "unobtainium"
+            "Ice", "Mercury", "Carbonite", "Unobtainium"
         ],
-        answer: "carbonite"
+        answer: "Carbonite"
     },
     {
         title: "What was the name of the furry creatures that help Han, Luke, and Leia on the forest moon of Endor?",
         choices: [
-            "Firbees", "Greemlins", "Wookies", "Ewoks"
+            "Furbees", "Jawas", "Wookies", "Ewoks"
         ],
         answer: "Ewoks"
     },
@@ -129,7 +129,7 @@ function review(userChoice, correctChoice) {
 // the language of the quiz after the user hits begin 
 $('#quizButton').click(function () {
     $('#window').empty();
-    $('#window').text('Young Padawan, you will have 200 seconds to complete a 15 question text. The test must be completed before the timer expires. For every wrong answer, 10 seconds will be deducted. To become a Jedi Knight, you must score above 100. For those special few who can score above 150, they will be awared the rank of Jedi Master. Your timer is designated by the red Sith Lightsaber. Your progress is designated by the blue Jedi Lightsaber. Click below to begin.');
+    $('#window').text('Young Padawan, you will have 200 seconds to complete a 15 question test. The test must be completed before the timer expires. For every wrong answer, 10 seconds will be deducted. To become a Jedi Knight, you must score above 100. For those special few who can score above 150, they will be awared the rank of Jedi Master. Your timer is designated by the red Sith Lightsaber. Your progress is designated by the blue Jedi Lightsaber. Click below to begin.');
     $('#window').append('<hr>');
     $('#window').append('HEED THIS WARNING: If you have not completed your training by viewing Episodes I through IX, there will be spoilers.');
     $('#window').append('<hr>');
@@ -160,7 +160,7 @@ $('#quizButton').click(function () {
                 $('#window').append('It is apparent you are a Sith. You must be destroyed.');
                 $('#window').append('<hr>');
                 $('#window').append('<img src="assets/images/sith.gif" syle="width:50%" />');
-                $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
             };
         }, 1000);
         timer;
@@ -190,20 +190,20 @@ $('#quizButton').click(function () {
                     if (score > 149) {
                         $('#window').append('<hr>');
                         $('#window').append('You have been awarded the rank of JEDI MASTER.');
-                        $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
-                    } if (score > 99) {
+                        $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                    } else if (score > 99) {
                         $('#window').append('<hr>');
                         $('#window').append('You have been awarded the rank of JEDI KNIGHT.');
-                        $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                        $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                     } else {
                         $('#window').append('<hr>');
                         $('#window').append('You have been awarded the rank of JEDI IN TRAINING.');
-                        $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                        $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                     };
                 } else {
                     $('#window').append('<hr>');
                     $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.');
-                    $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                    $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                 };
                 return;
             };
