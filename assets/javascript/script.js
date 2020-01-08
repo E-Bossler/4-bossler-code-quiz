@@ -160,6 +160,7 @@ $('#quizButton').click(function () {
                 $('#window').append('It is apparent you are a Sith. You must be destroyed.');
                 $('#window').append('<hr>');
                 $('#window').append('<img src="assets/images/sith.gif" syle="width:50%" />');
+                $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
             };
         }, 1000);
         timer;
@@ -169,15 +170,12 @@ $('#quizButton').click(function () {
         $('#window').text(questions[q].title);
         for (var k = 0; k < 4; k++) {
             $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
-            $('#window').append('<hr>');
             $('.answers').css('background-color','goldenrod');
         };
         $(document).on('click', '.answers', function () {
             var userChoice = $(this).text().trim();
             i = checkAnswer(userChoice, questions[q].answer, i);
             $('#answer').text(review(userChoice, questions[q].answer));
-            $('#window').append('<hr>');
-            $('.answers').css('background-color','goldenrod');
             q++;
             // after the last question is answered, stop the countdown and show the score 
             if (q > 14) {
@@ -191,17 +189,21 @@ $('#quizButton').click(function () {
                 if (score > 49) {
                     if (score > 149) {
                         $('#window').append('<hr>');
-                        $('#window').append('You have been awared the rank of JEDI MASTER.');
+                        $('#window').append('You have been awarded the rank of JEDI MASTER.');
+                        $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                     } if (score > 99) {
                         $('#window').append('<hr>');
-                        $('#window').append('You have been awared the rank of JEDI KNIGHT.');
+                        $('#window').append('You have been awarded the rank of JEDI KNIGHT.');
+                        $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                     } else {
                         $('#window').append('<hr>');
-                        $('#window').append('You have been awared the rank of JEDI IN TRAINING.');
+                        $('#window').append('You have been awarded the rank of JEDI IN TRAINING.');
+                        $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                     };
                 } else {
                     $('#window').append('<hr>');
                     $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.');
+                    $('#window').append('<a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                 };
                 return;
             };
@@ -210,8 +212,9 @@ $('#quizButton').click(function () {
             $('#light').width(j + '%');
             $('#window').text(questions[q].title);
             for (var k = 0; k < 4; k++) {
-                $('#window').append('<br><button>' + questions[q].choices[k] + '</button>');
+                $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
             }
+            $('.answers').css('background-color','goldenrod');
             // remove the correct/wrong notification after 1 second 
             setTimeout(function () {
                 $('#answer').empty();
