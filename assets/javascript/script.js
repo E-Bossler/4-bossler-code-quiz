@@ -126,6 +126,16 @@ function review(userChoice, correctChoice) {
     }
 };
 
+//function to determine rank 
+function determineRank(score) {
+    if (parseInt(score) > 149) {
+        var rank = 'JEDI MASTER';
+    } else if (parseInt(score) > 99) {
+        var rank = 'JEDI KNIGHT';
+    } else var rank = 'JEDI IN TRAINING';
+    return rank;
+}
+
 // the language of the quiz after the user hits begin 
 $('#quizButton').click(function () {
     $('#window').empty();
@@ -135,7 +145,7 @@ $('#quizButton').click(function () {
     $('#window').append('<hr>');
     $('#window').append('<button id="jedi">Begin</button>');
     $('#window').append('<hr>');
-    $('#jedi').css('background-color','goldenrod');
+    $('#jedi').css('background-color', 'goldenrod');
     $('#jedi').click(function () {
         $('#window').empty();
         // change for the progress saber
@@ -146,10 +156,8 @@ $('#quizButton').click(function () {
         var timer = setInterval(function () {
             $("#dark").width(i / 2.2222222 + '%');
             i++;
-            console.log(i);
             // if the timer expires, stop the countdown and show the score 
             if (i > 200) {
-                console.log('this is working and the time has stopped');
                 $('#window').empty();
                 $('#answer').empty();
                 clearInterval(timer);
@@ -170,7 +178,7 @@ $('#quizButton').click(function () {
         $('#window').text(questions[q].title);
         for (var k = 0; k < 4; k++) {
             $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
-            $('.answers').css('background-color','goldenrod');
+            $('.answers').css('background-color', 'goldenrod');
         };
         $(document).on('click', '.answers', function () {
             var userChoice = $(this).text().trim();
@@ -187,24 +195,28 @@ $('#quizButton').click(function () {
                 $('#window').text('Young Padawan, you have scored ' + score + '.');
                 // determines what level the user given their score 
                 if (score > 49) {
-                    if (score > 149) {
-                        $('#window').append('<hr>');
-                        $('#window').append('You have been awarded the rank of JEDI MASTER.');
-                        $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
-                    } else if (score > 99) {
-                        $('#window').append('<hr>');
-                        $('#window').append('You have been awarded the rank of JEDI KNIGHT.');
-                        $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
-                    } else {
-                        $('#window').append('<hr>');
-                        $('#window').append('You have been awarded the rank of JEDI IN TRAINING.');
-                        $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
-                    };
+                    rank = determineRank(score);
+                    console.log(rank);
+                    $('#window').append('<hr>');
+                    $('#window').append('You have been awarded the rank of ' + rank + '. <br> You may log your score or retake the Exam.');
                 } else {
                     $('#window').append('<hr>');
-                    $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.');
-                    $('#window').append('<br><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                    $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.. or if you choose, I will allow you to retake the Exam.');
                 };
+                // input score and store it in local storage
+                $('#window').append('<hr>Please input your initials, Padawan:<form style:"width: 50%"><input type="text"><hr><button type="submit" id="submitForm" style:"width: 50%; margin: 0 0 0 25%; border-color: black; border-radius: 5px">Log my Score</button></form>');
+                var submitButton = document.querySelector("#submitForm");
+                submitButton.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    console.log("Submitted");
+                });
+                $('#window').append('<hr><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
+                // object with three key value pairs - initials, rank, and score 
+
+                // store it in local storage 
+                // create a separate javacsript file for the high score page that will pull the data from local storage and display it
+                // add a button to the high score page to clear them out (empty the div and remove from lcoal storage)
+
                 return;
             };
             //display the next question
@@ -214,7 +226,7 @@ $('#quizButton').click(function () {
             for (var k = 0; k < 4; k++) {
                 $('#window').append('<br><button class="answers">' + questions[q].choices[k] + '</button>');
             }
-            $('.answers').css('background-color','goldenrod');
+            $('.answers').css('background-color', 'goldenrod');
             // remove the correct/wrong notification after 1 second 
             setTimeout(function () {
                 $('#answer').empty();
@@ -227,10 +239,3 @@ $('#quizButton').click(function () {
 
 // pull high scorese from local storage 
 
-//click on button to create a question and four answers 
-// also create a timer - countdown from 200
-// clear the div by id window 
-//
-
-
-// list questions 
