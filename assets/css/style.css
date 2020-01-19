@@ -40,14 +40,31 @@ button {
 
 #homeButton {
     background-color: palevioletred;
+    color: black;
 }
 
 #jedi {
     background-image: url(../../assets/images/jedi.png);
 }
 
+#emptyButton {
+    background-color: chartreuse;
+    color: black;
+}
+
 .answers {
     background-color: goldenrod;
+}
+
+.pure-table {
+    width: 50%;
+    margin: 0 0 0 25%;
+    border-color: white;
+    border-radius: 5px;
+}
+
+#jediScores {
+    color: yellow;
 }
 
 

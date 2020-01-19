@@ -136,6 +136,18 @@ function determineRank(score) {
     return rank;
 }
 
+//function to display scores on high score page 
+
+function showScores(initials, userRank, userScore) {
+    var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
+    if (previousHighScores == null) previousHighScores = [];
+    for (let i = 0; i < previousHighScores.length; i++) {
+        $('#jediScores').append('<tr><td>' + previousHighScores[i].userInitials + '</td><td>' + previousHighScores[i].userRank + '</td><td>' + previousHighScores[i].userScore + '</td></tr>');
+    }
+};
+
+
+
 // the language of the quiz after the user hits begin 
 $('#quizButton').click(function () {
     $('#window').empty();
@@ -187,7 +199,7 @@ $('#quizButton').click(function () {
             q++;
             // after the last question is answered, stop the countdown and show the score 
             if (q > 14) {
-                console.log(scoreMod);
+                //console.log(scoreMod);
                 $('#window').empty();
                 $('#answer').empty();
                 clearInterval(timer);
@@ -196,7 +208,7 @@ $('#quizButton').click(function () {
                 // determines what level the user given their score 
                 if (score > 49) {
                     rank = determineRank(score);
-                    console.log(rank);
+                    //console.log(rank);
                     $('#window').append('<hr>');
                     $('#window').append('You have been awarded the rank of ' + rank + '. <br> You may log your score or retake the Exam.');
                 } else {
@@ -204,18 +216,36 @@ $('#quizButton').click(function () {
                     $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.. or if you choose, I will allow you to retake the Exam.');
                 };
                 // input score and store it in local storage
-                $('#window').append('<hr>Please input your initials, Padawan:<form style:"width: 50%"><input type="text"><hr><button type="submit" id="submitForm" style:"width: 50%; margin: 0 0 0 25%; border-color: black; border-radius: 5px">Log my Score</button></form>');
+                $('#window').append('<hr>Please input your name, Padawan:<form  style:"width: 50%"><input id="initials" type="text"/><hr><button type="submit" id="submitForm" style:"width: 50%; margin: 0 0 0 25%; border-color: black; border-radius: 5px">Log my Score</button></form>');
                 var submitButton = document.querySelector("#submitForm");
+                var initials = document.querySelector('#initials');
                 submitButton.addEventListener("click", function (e) {
                     e.preventDefault();
-                    console.log("Submitted");
+                    //validate the initials are entered 
+                    if (initials.value === "") {
+                        alert('Please enter your initials, Padawan.');
+                        return;
+                    };
+                    //console.log("Submitted");
+                    var highScore = {
+                        'userInitials': initials.value.trim(),
+                        'userRank': rank,
+                        'userScore': score
+                    };
+
+                    // add highScore to local storage 
+                    var previousHighScores = JSON.parse(localStorage.getItem('previousHighScores'));
+                    if (previousHighScores == null) previousHighScores = [];
+                    previousHighScores.push(highScore);
+                    localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores));
+                    //take uers to the high score page 
+                    window.location.href = 'highscores.html';
+                    console.log('WE ARE GETTING TO THIS PART OF THE JS')
                 });
                 $('#window').append('<hr><a href="index.html"><button id="quizButton">Retake the Exam</button></a>');
                 // object with three key value pairs - initials, rank, and score 
 
-                // store it in local storage 
-                // create a separate javacsript file for the high score page that will pull the data from local storage and display it
-                // add a button to the high score page to clear them out (empty the div and remove from lcoal storage)
+                var userInitials = $('submitbutton').text();
 
                 return;
             };
@@ -239,3 +269,10 @@ $('#quizButton').click(function () {
 
 // pull high scorese from local storage 
 
+showScores();
+
+$('#emptyButton').click(function () {
+    var previousHighScores = [];
+    localStorage.setItem("previousHighScores", JSON.stringify(previousHighScores));
+    $('#jediScores').empty();
+});
