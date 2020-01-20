@@ -216,7 +216,7 @@ $('#quizButton').click(function () {
                     $('#window').append('The Dark Side is strong with you, please come with me to the prison for reconditioning.. or if you choose, I will allow you to retake the Exam.');
                 };
                 // input score and store it in local storage
-                $('#window').append('<hr>Please input your name, Padawan:<form  style:"width: 50%"><input id="initials" type="text"/><hr><button type="submit" id="submitForm" style:"width: 50%; margin: 0 0 0 25%; border-color: black; border-radius: 5px">Log my Score</button></form>');
+                $('#window').append('<hr>Please input your name, Padawan:<form  style:"width: 50%"><input id="initials" type="text"/><hr><button type="submit" id="submitForm" style:"width: 50%; margin: 0 0 0 25%; border-color: black; border-radius: 5px; background-color: turquoise">Log my Score</button></form>');
                 var submitButton = document.querySelector("#submitForm");
                 var initials = document.querySelector('#initials');
                 submitButton.addEventListener("click", function (e) {
