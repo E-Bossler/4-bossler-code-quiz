@@ -206,7 +206,7 @@ $('#quizButton').click(function () {
                 var score = 200 - i - scoreMod;
                 $('#window').text('Young Padawan, you have scored ' + score + '.');
                 // determines what level the user given their score 
-                if (score > 49) {
+                if (score > 0) {
                     rank = determineRank(score);
                     //console.log(rank);
                     $('#window').append('<hr>');
